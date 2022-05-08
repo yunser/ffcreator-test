@@ -2,7 +2,7 @@ const { FFScene, FFText, FFVideo, FFAlbum, FFImage, FFCreator } = require("ffcre
 const path = require('path')
 const colors = require('colors');
 
-const _provinces = [
+let _provinces = [
     {
         "code": 440000,
         "name": "广东省",
@@ -10,36 +10,42 @@ const _provinces = [
         provincialCapital: '广州',
         iName: '',
         iCapital: '',
+        simplestName: '粤',
     },
     {
         "code": 650000,
         "name": "新疆维吾尔自治区",
         "simpleName": "新疆",
         provincialCapital: '乌鲁木齐',
+        simplestName: '新',
     },
     {
         "code": 540000,
         "name": "西藏自治区",
         "simpleName": "西藏",
         provincialCapital: '拉萨',
+        simplestName: '藏',
     },
     {
         "code": 150000,
         "name": "内蒙古自治区",
         "simpleName": "内蒙古",
         provincialCapital: '呼和浩特',
+        simplestName: '内蒙古',
     },
     {
         "code": 630000,
         "name": "青海省",
         "simpleName": "青海",
         provincialCapital: '西宁',
+        simplestName: '青',
     },
     {
         "code": 510000,
         "name": "四川省",
         "simpleName": "四川",
         provincialCapital: '成都',
+        simplestName: '青',
     },
     {
         "code": 230000,
@@ -212,6 +218,7 @@ const _provinces = [
         provincialCapital: '澳门',
     }
 ]
+// _provinces = _provinces.slice(0, 3)
 
 // Create FFCreator instance
 
@@ -242,7 +249,7 @@ scene.addAudio({
     // src?: string;
     // bg: true,
     // loop: true,
-    volume: 0.4,
+    volume: 0.2,
 })
 
 // 片头 2 s
@@ -288,7 +295,7 @@ _provinces.forEach((province, idx) => {
             text: ('' + (guess_time - time)), 
             x: canvas_width / 2, 
             y: canvas_height / 3 * 2,
-            fontSize: 96,
+            fontSize: 80,
         });
         text.setColor("#333");
         text.addEffect("fadeIn", 0.01, startTime + time)
@@ -302,7 +309,7 @@ _provinces.forEach((province, idx) => {
             text: province.provincialCapital,
             x: canvas_width / 2,
             y: canvas_height / 3 * 2,
-            fontSize: 96,
+            fontSize: 64,
         });
         text.setColor("#000");
         text.addEffect("fadeIn", 0.01, startTime + guess_time)
